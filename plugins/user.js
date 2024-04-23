@@ -57,10 +57,10 @@ command(
   },
   async (message, match,m) => {
     if (!message.reply_message.image)
-      return await message.reply("*_Reply to a photo_*");
+      return await message.reply("*ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴘʜᴏᴛᴏ*");
     let media = await m.quoted.download();
     await updateProfilePicture(message.user, media, message);
-    return await message.reply("*_Profile Picture Updated_*");
+    return await message.reply("*ᴘʀᴏғɪʟᴇ ᴘɪᴄᴛᴜʀᴇ ᴜᴘᴅᴀᴛᴇᴅ ✓*");
   }
 );
 
@@ -112,14 +112,14 @@ command(
   async (message, match) => {
     if (message.isGroup) {
       let jid = message.mention[0] || message.reply_message.jid;
-      if (!jid) return await message.reply("*_Need a number/reply/mention!_*");
+      if (!jid) return await message.reply("*ɴᴇᴇᴅ ᴀ ɴᴜᴍʙᴇʀ/ʀᴇᴘʟʏ/ᴍᴇɴᴛɪᴏɴ!*");
       await message.block(jid);
-      return await message.sendMessageMessage(`_@${jid.split("@")[0]} Blocked_`, {
+      return await message.sendMessageMessage(`@${jid.split("@")[0]} ʙʟᴏᴄᴋᴇᴅ`, {
         mentions: [jid],
       });
     } else {
       await message.block(message.jid);
-      return await message.reply("_User blocked_");
+      return await message.reply("ᴜsᴇʀ ʙʟᴏᴄᴋᴇᴅ");
     }
   }
 );
@@ -140,14 +140,14 @@ command(
   async (message, match) => {
     if (message.isGroup) {
       let jid = message.mention[0] || message.reply_message.jid;
-      if (!jid) return await message.reply("*_Need a number/reply/mention!_*");
+      if (!jid) return await message.reply("*ɴᴇᴇᴅ ᴀ ɴᴜᴍʙᴇʀ/ʀᴇᴘʟʏ/ᴍᴇɴᴛɪᴏɴ!*");
       await message.block(jid);
-      return await message.sendMessage(`*_@${jid.split("@")[0]} unblocked_*`, {
+      return await message.sendMessage(`*@${jid.split("@")[0]} ᴜɴʙʟᴏᴄᴋᴇᴅ*`, {
         mentions: [jid],
       });
     } else {
       await message.unblock(message.jid);
-      return await message.reply("*_User unblocked_*");
+      return await message.reply("*ᴜsᴇʀ ᴜɴʙʟᴏᴄᴋᴇᴅ*");
     }
   }
 );
@@ -186,7 +186,7 @@ command(
     type: "user",
   },
   async (message, match,m,client) => {
-    if (!message.reply_message) return await message.reply("*_Reply to a message_*"); {
+    if (!message.reply_message) return await message.reply("*ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ*"); {
       await client.sendMessage(message.jid, { delete: message.reply_message.key })
     }
   }
@@ -320,11 +320,11 @@ command(
     return await message.reply(message.jid, { text: (tiny(menu)), contextInfo: { externalAdReply: {
 title: "𝚵𝚭𝚪𝚫-𝚾𝐃",
 sourceUrl: "",
-mediaUrl: "https://instagram.com/abhiiiiiyh",
+mediaUrl: "https://instagram.com/prince_rudh",
 mediaType: 1,
 showAdAttribution: true,
 renderLargerThumbnail: false,
-thumbnailUrl: "https://i.imgur.com/PlDhcfI.jpeg" }} }) })
+thumbnailUrl: "https://i.imgur.com/We9h8KU.jpeg" }} }) })
 
 
 
@@ -342,12 +342,12 @@ command(
     type:'user'
   },
   async (message, match) => {
-    if (!match) return await message.sendMessage("*_Send a plugin url_*");
+    if (!match) return await message.sendMessage("*sᴇɴᴅ ᴀ ᴘʟᴜɢɪɴ ᴜʀʟ*");
     for (let Url of getUrl(match)) {
       try {
         var url = new URL(Url);
       } catch {
-        return await message.sendMessage("*_Invalid Url_*");
+        return await message.sendMessage("*ɪɴᴠᴀʟɪᴅ ᴜʀʟ*");
       }
 
       if (url.host === "gist.github.com") {
@@ -372,13 +372,13 @@ command(
           require("./" + plugin_name);
         } catch (e) {
           fs.unlinkSync("/xasena/plugins/" + plugin_name + ".js");
-          return await message.sendMessage("*_Invalid Plugin_*\n ```" + e + "```");
+          return await message.sendMessage("*ɪɴᴠᴀʟɪᴅ ᴘʟᴜɢɪɴ*\n ```" + e + "```");
         }
 
         await installPlugin(url, plugin_name);
 
         await message.sendMessage(
-          `*_New plugin installed : ${commands.join(",")}_*`
+          `*ᴘʟᴜɢɪɴ ɪɴsᴛᴀʟʟᴇᴅ : ${commands.join(",")}*`
         );
       }
     }
@@ -401,7 +401,7 @@ command(
     var mesaj = "";
     var plugins = await PluginDB.findAll();
     if (plugins.length < 1) {
-      return await message.sendMessage("*_No external plugins installed_*");
+      return await message.sendMessage("*ɴᴏ ᴇxᴛᴇʀɴᴀʟ ᴘʟᴜɢɪɴs ɪɴsᴛᴀʟʟᴇᴅ*");
     } else {
       plugins.map((plugin) => {
         mesaj +=
@@ -430,17 +430,17 @@ command(
     type:'user'
   },
   async (message, match) => {
-    if (!match) return await message.sendMessage("*_Need a plugin name_*");
+    if (!match) return await message.sendMessage("*ɴᴇᴇᴅ ᴀ ᴘʟᴜɢɪɴ ɴᴀᴍᴇ*");
 
     var plugin = await PluginDB.findAll({ where: { name: match } });
 
     if (plugin.length < 1) {
-      return await message.sendMessage("*_Plugin not found_*");
+      return await message.sendMessage("*ᴘʟᴜɢɪɴ ɴᴏᴛ ғᴏᴜɴᴅ*");
     } else {
       await plugin[0].destroy();
       delete require.cache[require.resolve("./" + match + ".js")];
       fs.unlinkSync("./plugins/" + match + ".js");
-      await message.sendMessage(`Plugin ${match} deleted`);
+      await message.sendMessage(`ᴘʟᴜɢɪɴ ${match} ᴅᴇʟᴇᴛᴇᴅ`);
     }
   }
 );
